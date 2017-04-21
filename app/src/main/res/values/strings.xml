@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Attendence Report</string>
+
+    <string-array name="year_items">
+        <item>First Year</item>
+        <item>Second Year</item>
+        <item>Third Year</item>
+        <item>Fourth Year</item>
+    </string-array>
+
+    <string-array name="year_sem_items">
+        <item>First Year - 1 sem</item>
+        <item>First Year - 2 sem</item>
+        <item>Second Year - 1 sem</item>
+        <item>Second Year - 2 sem</item>
+        <item>Third Year - 1 sem</item>
+        <item>Third Year - 2 sem</item>
+        <item>Fourth Year - 1 sem</item>
+        <item>Fourth Year - 2 sem</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+
+</resources>
