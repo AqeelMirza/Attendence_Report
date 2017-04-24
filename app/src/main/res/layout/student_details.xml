@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/txt_user"
@@ -66,8 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Branch"
-                    android:inputType="text"
-                    android:maxLength="10"
+                    android:inputType="textCapWords"
                     android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Semester %"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:maxLines="1" />
 
@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Last Month Attendance"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:maxLines="1" />
 

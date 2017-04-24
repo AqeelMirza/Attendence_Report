@@ -1,7 +1,10 @@
 package com.example.itp.attendence_report.Models;
 
 
-public class Student {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Student implements Parcelable{
 
     public String student_name;
     public String student_rollnumber;
@@ -14,6 +17,29 @@ public class Student {
 
     public Student() {
     }
+
+    protected Student(Parcel in) {
+        student_name = in.readString();
+        student_rollnumber = in.readString();
+        student_branch = in.readString();
+        student_year = in.readString();
+        student_year_sem = in.readString();
+        student_year_sem_percentage = in.readString();
+        student_month = in.readString();
+        student_month_attendance = in.readString();
+    }
+
+    public static final Creator<Student> CREATOR = new Creator<Student>() {
+        @Override
+        public Student createFromParcel(Parcel in) {
+            return new Student(in);
+        }
+
+        @Override
+        public Student[] newArray(int size) {
+            return new Student[size];
+        }
+    };
 
     public String getStudent_name() {
         return student_name;
@@ -88,5 +114,22 @@ public class Student {
         this.student_year_sem_percentage = student_year_sem_percentage;
         this.student_month = student_month;
         this.student_month_attendance = student_month_attendance;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(student_name);
+        parcel.writeString(student_rollnumber);
+        parcel.writeString(student_branch);
+        parcel.writeString(student_year);
+        parcel.writeString(student_year_sem);
+        parcel.writeString(student_year_sem_percentage);
+        parcel.writeString(student_month);
+        parcel.writeString(student_month_attendance);
     }
 }

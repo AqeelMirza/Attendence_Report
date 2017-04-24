@@ -9,15 +9,7 @@ public class Faculty {
     String faculty_fullname;
     String faculty_username;
     String faculty_password;
-    HashMap<String, ArrayList<HashMap<String, Student>>> student_details = new HashMap();
-
-    public HashMap<String, ArrayList<HashMap<String, Student>>> getStudent_details() {
-        return student_details;
-    }
-
-    public void setStudent_details(HashMap<String, ArrayList<HashMap<String, Student>>> student_details) {
-        this.student_details = student_details;
-    }
+    Student student_details = new Student();
 
     public String getFaculty_fullname() {
         return faculty_fullname;
@@ -44,7 +36,7 @@ public class Faculty {
     }
 
 
-    public Faculty(String faculty_fullname, String faculty_username, String faculty_password, HashMap<String, ArrayList<HashMap<String, Student>>> student_details) {
+    public Faculty(String faculty_fullname, String faculty_username, String faculty_password, Student student_details) {
 
         this.faculty_fullname = faculty_fullname;
         this.faculty_username = faculty_username;

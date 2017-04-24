@@ -67,15 +67,8 @@ public class NewFaculty_Activity extends AppCompatActivity {
         // In real apps this userId should be fetched
         // by implementing firebase auth
         student = new Student();
-        HashMap<String, Student> studentHashMap = new HashMap<>();
-        ArrayList<HashMap<String, Student>> hashMapArrayList = new ArrayList<>();
 
-        hashMapArrayList.add(studentHashMap);
-
-        HashMap<String, ArrayList<HashMap<String, Student>>> student_map = new HashMap();
-
-        student_map.put("students", hashMapArrayList);
-        faculty = new Faculty(name, user_name, password, student_map);
+        faculty = new Faculty(name, user_name, password, student);
 
         mFirebaseDatabase.child(user_name).setValue(faculty);
 

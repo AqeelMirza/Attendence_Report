@@ -44,7 +44,9 @@
             android:id="@+id/search_student_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search Student" />
+            android:hint="Search Student(by Roll Number)"
+            android:inputType="number"
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <Button

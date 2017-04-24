@@ -30,6 +30,9 @@ public class Faculty_LoginActivity extends AppCompatActivity {
     DatabaseReference myRef;
     EditText username_et, password_et;
     Button loginbtn, newFaculty_btn;
+    public static String fac_username;
+    public static String fac_password;
+    public static String fac_name;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class Faculty_LoginActivity extends AppCompatActivity {
         });
     }
 
-    void loginService(String username, final String password) {
+    void loginService(final String username, final String password) {
 
 
         String url = "https://attendancereport-31594.firebaseio.com/users/" + username + ".json";
@@ -95,6 +98,10 @@ public class Faculty_LoginActivity extends AppCompatActivity {
                                     Toast.makeText(Faculty_LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     String faculty_username = jsonObject.getString("faculty_username");
                                     String faculty_fullname = jsonObject.getString("faculty_fullname");
+
+                                    fac_username = faculty_username;
+                                    fac_password = password;
+                                    fac_name = faculty_fullname;
 
                                     Intent i = new Intent(Faculty_LoginActivity.this, Add_or_Search_StudentActivity.class);
                                     i.putExtra("fullname", faculty_fullname);
