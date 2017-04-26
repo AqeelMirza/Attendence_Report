@@ -101,6 +101,7 @@ public class Add_or_Search_StudentActivity extends AppCompatActivity {
                                 student.setStudent_month_attendance(jsonObject.getString("student_month_attendance"));
                                 student.setStudent_year(jsonObject.getString("student_year"));
                                 student.setStudent_year_sem(jsonObject.getString("student_year_sem"));
+                                student.setStudent_phonenum(jsonObject.getString("student_phonenum"));
                                 student.setStudent_year_sem_percentage(jsonObject.getString("student_year_sem_percentage"));
 
                                 Intent in = new Intent(Add_or_Search_StudentActivity.this, AddStudent_Activity.class);
@@ -110,6 +111,7 @@ public class Add_or_Search_StudentActivity extends AppCompatActivity {
 
 
                             } catch (JSONException e) {
+                                Toast.makeText(Add_or_Search_StudentActivity.this, "some error occurred.", Toast.LENGTH_SHORT).show();
                                 e.printStackTrace();
                             }
 

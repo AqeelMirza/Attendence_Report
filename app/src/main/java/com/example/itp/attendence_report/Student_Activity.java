@@ -29,7 +29,7 @@ import org.json.JSONObject;
 
 public class Student_Activity extends AppCompatActivity {
 
-    TextView name, rollnumber_tv, branch, year, year_sem, sem_per, month, month_att;
+    TextView name, rollnumber_tv, branch, year, year_sem, sem_per, month, month_att, phonenumber;
     LinearLayout details_layout;
 
     @Override
@@ -45,6 +45,7 @@ public class Student_Activity extends AppCompatActivity {
         details_layout = (LinearLayout) findViewById(R.id.studentinfo_layout);
         rollnumber_tv = (TextView) findViewById(R.id.roll_num);
         name = (TextView) findViewById(R.id.roll_name);
+        phonenumber = (TextView) findViewById(R.id.roll_phonenumber);
         branch = (TextView) findViewById(R.id.roll_branch);
         year = (TextView) findViewById(R.id.roll_year);
         year_sem = (TextView) findViewById(R.id.roll_year_sem);
@@ -99,6 +100,7 @@ public class Student_Activity extends AppCompatActivity {
                                 details_layout.setVisibility(View.VISIBLE);
                                 rollnumber_tv.setText("Roll Number - " + jsonObject.getString("student_rollnumber"));
                                 name.setText("Student Name - " + jsonObject.getString("student_name"));
+                                phonenumber.setText("Student PhoneNumber - " + jsonObject.getString("student_phonenum"));
                                 branch.setText("Branch - " + jsonObject.getString("student_branch"));
                                 month.setText("Last Month - " + jsonObject.getString("student_month"));
                                 month_att.setText("Attendance(last month) - " + jsonObject.getString("student_month_attendance"));

@@ -4,14 +4,24 @@ package com.example.itp.attendence_report.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Student implements Parcelable{
+public class Student implements Parcelable {
 
     public String student_name;
+    public String student_phonenum;
     public String student_rollnumber;
     public String student_branch;
     public String student_year;
     public String student_year_sem;
     public String student_year_sem_percentage;
+
+    public String getStudent_phonenum() {
+        return student_phonenum;
+    }
+
+    public void setStudent_phonenum(String student_phonenum) {
+        this.student_phonenum = student_phonenum;
+    }
+
     public String student_month;
     public String student_month_attendance;
 
@@ -27,6 +37,7 @@ public class Student implements Parcelable{
         student_year_sem_percentage = in.readString();
         student_month = in.readString();
         student_month_attendance = in.readString();
+        student_phonenum = in.readString();
     }
 
     public static final Creator<Student> CREATOR = new Creator<Student>() {
@@ -105,7 +116,7 @@ public class Student implements Parcelable{
         this.student_month_attendance = student_month_attendance;
     }
 
-    public Student(String student_name, String student_rollnumber, String student_branch, String student_year, String student_year_sem, String student_year_sem_percentage, String student_month, String student_month_attendance) {
+    public Student(String student_name, String student_rollnumber, String student_branch, String student_year, String student_year_sem, String student_year_sem_percentage, String student_month, String student_month_attendance, String student_phonenum) {
         this.student_name = student_name;
         this.student_rollnumber = student_rollnumber;
         this.student_branch = student_branch;
@@ -114,6 +125,7 @@ public class Student implements Parcelable{
         this.student_year_sem_percentage = student_year_sem_percentage;
         this.student_month = student_month;
         this.student_month_attendance = student_month_attendance;
+        this.student_phonenum = student_phonenum;
     }
 
     @Override
@@ -131,5 +143,6 @@ public class Student implements Parcelable{
         parcel.writeString(student_year_sem_percentage);
         parcel.writeString(student_month);
         parcel.writeString(student_month_attendance);
+        parcel.writeString(student_phonenum);
     }
 }

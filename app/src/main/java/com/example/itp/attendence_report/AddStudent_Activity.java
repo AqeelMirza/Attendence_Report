@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +27,11 @@ public class AddStudent_Activity extends AppCompatActivity {
     String faculty_name = Faculty_LoginActivity.fac_name;
     String faculty_username = Faculty_LoginActivity.fac_username;
     String faculty_password = Faculty_LoginActivity.fac_password;
-    EditText rollnum_et, student_name_et, branch_et, sem_per_et, month_att_et;
+    EditText rollnum_et, student_name_et, branch_et, sem_per_et, month_att_et, student_phone_et;
     Spinner year_sp, year_sem_sp, month_sp;
     Button save_btn;
     Student student;
-    String rollNum, studentName, branch, semester_percentage, month_attendance, year, year_sem, month;
+    String rollNum, studentName, branch, semester_percentage, month_attendance, year, year_sem, month, student_phonenum;
     Faculty faculty;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
@@ -44,6 +45,7 @@ public class AddStudent_Activity extends AppCompatActivity {
 
         rollnum_et = (EditText) findViewById(R.id.student_rollnum);
         student_name_et = (EditText) findViewById(R.id.student_name);
+        student_phone_et = (EditText) findViewById(R.id.student_phonenum);
         branch_et = (EditText) findViewById(R.id.student_branch);
         sem_per_et = (EditText) findViewById(R.id.student_Last_sem_result);
         month_att_et = (EditText) findViewById(R.id.student_Last_month_att);
@@ -61,6 +63,7 @@ public class AddStudent_Activity extends AppCompatActivity {
             rollnum_et.setText(student.getStudent_rollnumber());
             student_name_et.setText(student.getStudent_name());
             branch_et.setText(student.getStudent_branch());
+            student_phone_et.setText(student.getStudent_phonenum());
             save_btn.setText("Update");
         }
 
@@ -77,6 +80,7 @@ public class AddStudent_Activity extends AppCompatActivity {
                 rollNum = rollnum_et.getText().toString().trim();
                 studentName = student_name_et.getText().toString().trim();
                 branch = branch_et.getText().toString().trim();
+                student_phonenum = student_phone_et.getText().toString().trim();
                 semester_percentage = sem_per_et.getText().toString().trim();
                 month_attendance = month_att_et.getText().toString().trim();
                 year = year_sp.getSelectedItem().toString();
@@ -84,15 +88,17 @@ public class AddStudent_Activity extends AppCompatActivity {
                 month = month_sp.getSelectedItem().toString();
 
                 if (rollNum.isEmpty() || studentName.isEmpty() || branch.isEmpty() || semester_percentage.isEmpty() || month_attendance.isEmpty()
-                        || year.isEmpty() || year_sem.isEmpty() || month.isEmpty()) {
+                        || year.isEmpty() || year_sem.isEmpty() || month.isEmpty() || student_phonenum.isEmpty()) {
                     Toast.makeText(AddStudent_Activity.this, "Please fill complete form.", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    student = new Student(studentName, rollNum, branch, year, year_sem, semester_percentage, month, month_attendance);
+                    student = new Student(studentName, rollNum, branch, year, year_sem, semester_percentage, month, month_attendance, student_phonenum);
 
                     mFirebaseDatabase.child(faculty_username).child("student_details").child(rollNum).setValue(student);
 
                     Toast.makeText(AddStudent_Activity.this, "Student created successfully", Toast.LENGTH_SHORT).show();
+
+                    sendSMS(student_phonenum, "Hi, " + studentName + "\n Your attendance details has been updated.");
 
                     Intent in = new Intent(AddStudent_Activity.this, Add_or_Search_StudentActivity.class);
                     startActivity(in);
@@ -102,5 +108,10 @@ public class AddStudent_Activity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void sendSMS(String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
 }
